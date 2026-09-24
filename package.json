@@ -1,0 +1,25 @@
+{
+  "name": "spectra-desk",
+  "version": "9.0.0",
+  "private": true,
+  "description": "Single-fire OSINT report delivery for researchers — public sources, fully sourced, archived",
+  "license": "MIT",
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client && npm install --prefix desktop",
+    "build": "npm run build --prefix server && npm run build --prefix client",
+    "build:desktop": "npm run build && npm run build --prefix desktop && npm run prepare:resources --prefix desktop",
+    "desktop:dev": "npm run build:desktop && npm run start --prefix desktop",
+    "dist:win": "npm run build:desktop && npm run dist:win --prefix desktop",
+    "package:release": "node scripts/package-release.mjs",
+    "smoke:packaged": "node scripts/smoke-packaged.mjs",
+    "doctor": "npm run cli --prefix server -- doctor",
+    "release:github": "npm run package:release && gh release create v%npm_package_version% --repo Pitchfork-and-Torch/spectra-desk --title \"v%npm_package_version% Corroborate\" --notes-file CHANGELOG.md dist/release/Spectra-Desk-Setup-%npm_package_version%.exe dist/release/Spectra-Desk-Portable-%npm_package_version%-win64.zip dist/release/SHA256SUMS.txt",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "start": "npm run start --prefix server",
+    "test": "npm run test --prefix server",
+    "demo": "npm run demo --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}

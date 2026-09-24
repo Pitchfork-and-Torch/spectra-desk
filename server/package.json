@@ -1,0 +1,41 @@
+{
+  "name": "spectra-desk-server",
+  "version": "9.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && node -e \"import('node:fs').then(fs=>{fs.mkdirSync('dist/data',{recursive:true});fs.copyFileSync('src/data/toolkit-catalog.json','dist/data/toolkit-catalog.json');console.log('copied toolkit-catalog.json')})\"",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:smoke": "tsx src/test-run.ts",
+    "demo": "tsx src/demo-run.ts",
+    "validate": "tsx src/validation/run-validation.ts",
+    "regenerate": "tsx src/regenerate-report.ts",
+    "mcp": "tsx src/mcp.ts",
+    "cli": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.0.11",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "cheerio": "^1.2.0",
+    "hono": "^4.12.31",
+    "playwright": "^1.52.0",
+    "robots-parser": "^3.0.1",
+    "sharp": "^0.35.3",
+    "uuid": "^14.0.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "allowScripts": {
+    "sharp@0.35.3": true
+  },
+  "overrides": {
+    "@hono/node-server": "^2.0.11"
+  }
+}
