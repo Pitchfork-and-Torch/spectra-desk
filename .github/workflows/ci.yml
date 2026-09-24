@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Pin full commit SHAs (repo requires sha_pinning_required)
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            server/package-lock.json
+            client/package-lock.json
+            desktop/package-lock.json
+      - run: npm install
+      - run: npm ci --prefix server
+      - run: npm ci --prefix client
+      - run: npm ci --prefix desktop
+      - run: npm run build
+      - run: npm run build --prefix server
+      - run: npm test --prefix server
+      - run: npm run test:smoke --prefix server
+      - run: npm run build --prefix desktop
+      - name: npm audit (desktop, high)
+        run: |
+          set +e
+          out=$(npm audit --prefix desktop --omit=dev --audit-level=high 2>&1)
+          code=$?
+          printf '%s\n' "$out"
+          if [ "$code" -eq 0 ]; then
+            exit 0
+          fi
+          if printf '%s\n' "$out" | grep -qiE 'Service Unavailable|audit endpoint returned an error|EAI_AGAIN|ETIMEDOUT|ECONNRESET|503'; then
+            echo '::warning::npm audit registry unavailable; not failing CI'
+            exit 0
+          fi
+          exit "$code"

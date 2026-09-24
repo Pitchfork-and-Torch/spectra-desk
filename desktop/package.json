@@ -1,0 +1,34 @@
+{
+  "name": "spectra-desk-desktop",
+  "version": "10.0.0",
+  "private": true,
+  "description": "Spectra Desk by Pitchfork-and-Torch",
+  "main": "dist/main.js",
+  "author": {
+    "name": "Pitchfork-and-Torch",
+    "url": "https://github.com/Pitchfork-and-Torch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pitchfork-and-Torch/spectra-desk.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare:resources": "node scripts/prepare-resources.mjs",
+    "build:icon": "node scripts/build-icon.mjs",
+    "start": "electron .",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3",
+    "png-to-ico": "^3.0.2",
+    "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "electron@43.2.0": true
+  }
+}

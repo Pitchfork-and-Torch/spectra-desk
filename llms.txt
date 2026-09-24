@@ -1,0 +1,35 @@
+# Spectra Desk
+
+> The public web, as a brief.
+
+- Version: 9.0.0 Corroborate
+- Site: https://spectradesk.jonbailey.xyz/
+- License: MIT
+- Platform: Windows 10 / 11, 64-bit
+
+## What it is
+
+A free Windows OSINT desk. A name, email, or username becomes a sourced client brief. It multiplies anchors and divides homonyms. Every capture is SHA-256. Toolkit catalog: 898 public search tools. Fast mode is capped at 12 queries.
+
+## What it is not
+
+Not legal proof of identity. Not a login bypass. Not a private-data broker. Not a subscription. The machine does not LOCK.
+
+## Install
+
+GitHub release v9.0.0 attaches Spectra-Desk-Setup-9.0.0.exe and Spectra-Desk-Portable-9.0.0-win64.zip with SHA256SUMS.txt. Hashed. Unsigned. If those asset URLs are not HTTP 200, the site download page says so and does not pretend the files exist.
+
+## Agent surface
+
+```
+spectra intake
+spectra divide
+spectra brief
+spectra lock
+spectra export
+spectra doctor
+spectra toolkit
+spectra case
+```
+
+MCP tools include intake, divide, brief, lock, export_case, doctor, toolkit_search, case_desk. lock refuses. Agents can draft. Agents cannot LOCK.

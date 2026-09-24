@@ -1,0 +1,28 @@
+node_modules/
+dist/
+client/dist/
+client/tsconfig.tsbuildinfo
+.env
+*.log
+# Case/runtime data dirs (do not ignore server/src/data catalog)
+/data/
+.spectra-cases/
+# Allow toolkit catalog JSON under server source
+!server/src/data/
+!server/src/data/**
+reports/published/*.html
+server/local-subject*.json
+server/src/validation/local-fixtures.ts
+server/src/validation/run-dustin-only.ts
+server/validate-last.txt
+server/*-v4.json
+drafts/
+desktop/resources/
+desktop/release/
+desktop/node_modules/
+licensing/node_modules/
+dist/release/
+desktop/assets/icon.png
+desktop/assets/icon.ico
+licensing/
+**/.spectra-desk/

@@ -1,0 +1,14 @@
+services:
+  spectra-api:
+    build: .
+    ports:
+      - "3847:3847"
+    volumes:
+      - spectra-data:/root/.spectra-desk
+    environment:
+      - SPECTRA_MODE=fast
+      - SPECTRA_LOG_LEVEL=info
+    restart: unless-stopped
+
+volumes:
+  spectra-data:
