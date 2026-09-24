@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Spectra Desk v5.1 - Infographic</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1400px;
+      height: 900px;
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      background: #06080f;
+      color: #e8e6f2;
+      overflow: hidden;
+    }
+    .frame {
+      width: 1400px;
+      height: 900px;
+      padding: 40px 44px 36px;
+      background:
+        radial-gradient(ellipse 900px 500px at 12% 0%, rgba(124, 58, 237, 0.28), transparent 55%),
+        radial-gradient(ellipse 700px 420px at 92% 18%, rgba(34, 211, 238, 0.14), transparent 50%),
+        radial-gradient(ellipse 600px 400px at 70% 100%, rgba(167, 139, 250, 0.12), transparent 45%),
+        linear-gradient(165deg, #0a0d18 0%, #06080f 45%, #0b1020 100%);
+      position: relative;
+    }
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(167, 139, 250, 0.22);
+      border-radius: 18px;
+      pointer-events: none;
+    }
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124, 58, 237, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 58, 237, 0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black, transparent);
+      pointer-events: none;
+    }
+    header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 28px;
+    }
+    .brand {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .ghost {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #ddd6fe, #a78bfa 45%, #7c3aed);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 32px rgba(124, 58, 237, 0.45);
+    }
+    .ghost svg { width: 36px; height: 36px; }
+    .titles h1 {
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .titles h1 span {
+      background: linear-gradient(90deg, #c4b5fd, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .titles p {
+      margin-top: 6px;
+      color: #9ca3c7;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .badge {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.35);
+      color: #67e8f9;
+      letter-spacing: 0.04em;
+    }
+    .cols {
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr 0.9fr;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+    .card {
+      background: rgba(15, 18, 32, 0.72);
+      border: 1px solid rgba(167, 139, 250, 0.18);
+      border-radius: 16px;
+      padding: 20px 20px 18px;
+      backdrop-filter: blur(8px);
+      min-height: 520px;
+    }
+    .card h2 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a78bfa;
+      margin-bottom: 16px;
+    }
+    .hero-stat {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .stat {
+      background: linear-gradient(160deg, rgba(124, 58, 237, 0.18), rgba(34, 211, 238, 0.06));
+      border: 1px solid rgba(167, 139, 250, 0.22);
+      border-radius: 12px;
+      padding: 14px 14px 12px;
+    }
+    .stat .n {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 32px;
+      font-weight: 600;
+      color: #f5f3ff;
+      line-height: 1;
+    }
+    .stat .l {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #9ca3c7;
+      font-weight: 500;
+    }
+    .pipeline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+    .step i {
+      font-family: "IBM Plex Mono", monospace;
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 600;
+      color: #22d3ee;
+      width: 22px;
+    }
+    .update {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .update:last-child { border-bottom: 0; }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px currentColor;
+    }
+    .dot.cyan { background: #22d3ee; color: #22d3ee; }
+    .dot.violet { background: #a78bfa; color: #a78bfa; }
+    .dot.lime { background: #a3e635; color: #a3e635; }
+    .dot.amber { background: #fbbf24; color: #fbbf24; }
+    .update h3 {
+      font-size: 14.5px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .update p {
+      font-size: 12.5px;
+      color: #9ca3c7;
+      line-height: 1.4;
+    }
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .chip {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: rgba(34, 211, 238, 0.08);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      color: #a5f3fc;
+    }
+    .chip.v {
+      background: rgba(167, 139, 250, 0.1);
+      border-color: rgba(167, 139, 250, 0.28);
+      color: #ddd6fe;
+    }
+    .validation {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.28);
+    }
+    .validation strong {
+      display: block;
+      color: #86efac;
+      font-size: 13px;
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .validation span {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 20px;
+      font-weight: 600;
+      color: #f0fdf4;
+    }
+    .validation small {
+      display: block;
+      margin-top: 4px;
+      color: #86efac;
+      font-size: 12px;
+      opacity: 0.85;
+    }
+    footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #6b728f;
+      font-size: 12.5px;
+    }
+    footer code {
+      font-family: "IBM Plex Mono", monospace;
+      color: #a78bfa;
+    }
+    .legal {
+      color: #7c839e;
+      font-size: 11.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="grid"></div>
+    <header>
+      <div class="brand">
+        <div class="ghost" aria-hidden="true">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#0b1020" d="M16 3C9.4 3 5 8.2 5 14.5V26c0 0 2.4-2.2 4.4 0 2 2.2 3.6-1.8 6.6 0 2-2.2 4.4 0 4.4 0V14.5C20 8.2 15.6 3 16 3Z" opacity=".15"/>
+            <path fill="#0b1020" d="M16 3C9.4 3 5 8.2 5 14.5V26c0 0 2.4-2.2 4.4 0 2 2.2 3.6-1.8 6.6 0 2-2.2 4.4 0 4.4 0V14.5C20 8.2 15.6 3 16 3Z"/>
+            <ellipse cx="12" cy="14.5" rx="2.1" ry="2.6" fill="#0b1020"/>
+            <ellipse cx="20" cy="14.5" rx="2.1" ry="2.6" fill="#0b1020"/>
+            <circle cx="12.6" cy="13.4" r=".75" fill="#22d3ee"/>
+            <circle cx="20.6" cy="13.4" r=".75" fill="#22d3ee"/>
+          </svg>
+        </div>
+        <div class="titles">
+          <h1>Spectra Desk <span>v5.1.0</span></h1>
+          <p>Investigator-grade OSINT - disambiguate, dossier, archive.</p>
+        </div>
+      </div>
+      <div class="badge">PUBLIC SOURCES ONLY · DESKTOP + MCP + CLI</div>
+    </header>
+
+    <div class="cols">
+      <section class="card">
+        <h2>What ships</h2>
+        <div class="hero-stat">
+          <div class="stat"><div class="n">10</div><div class="l">MCP investigator tools</div></div>
+          <div class="stat"><div class="n">88</div><div class="l">unit tests green</div></div>
+          <div class="stat"><div class="n">6/6</div><div class="l">ground-truth fixtures</div></div>
+          <div class="stat"><div class="n">24</div><div class="l">query permutations (full)</div></div>
+        </div>
+        <div class="pipeline">
+          <div class="step"><i>01</i> Intake + anchors (name, email, location, employer)</div>
+          <div class="step"><i>02</i> Username probes · GitHub · domain · LE dorks</div>
+          <div class="step"><i>03</i> Parallel search (unwrap Bing/Google redirects)</div>
+          <div class="step"><i>04</i> Homonym filter · signal fusion · scoring</div>
+          <div class="step"><i>05</i> Identity Workbench · Subject Dossier · portraits</div>
+          <div class="step"><i>06</i> HTML + PDF + SHA-256 chain of custody</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>v5.1 highlights</h2>
+        <div class="update">
+          <div class="dot cyan"></div>
+          <div>
+            <h3>Redirect URL unwrap</h3>
+            <p>Bing/Google/DDG tracking links decode to real LinkedIn, news, and record destinations before scoring.</p>
+          </div>
+        </div>
+        <div class="update">
+          <div class="dot violet"></div>
+          <div>
+            <h3>First-name collision filter</h3>
+            <p>Comic strips and fandom noise drop when the subject's surname is absent from the hit.</p>
+          </div>
+        </div>
+        <div class="update">
+          <div class="dot lime"></div>
+          <div>
+            <h3>LinkedIn professional pivot</h3>
+            <p>When site:linkedin is blocked, inject a /pub/dir pivot so investigators still have a confirmation path.</p>
+          </div>
+        </div>
+        <div class="update">
+          <div class="dot amber"></div>
+          <div>
+            <h3>LE-class scoring</h3>
+            <p>Uncommon surnames + successful noise filtering raise confidence for real-world subjects.</p>
+          </div>
+        </div>
+        <div class="validation">
+          <strong>Local validation</strong>
+          <span>6 passed · 0 failed</span>
+          <small>Dustin Daprizio (Tampa) · score 94 · LinkedIn pivot top candidate</small>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Stack & majors</h2>
+        <div class="stack">
+          <span class="chip v">Zod 4</span>
+          <span class="chip v">TypeScript 7</span>
+          <span class="chip v">Vite 8</span>
+          <span class="chip v">Electron 43</span>
+          <span class="chip">React 19</span>
+          <span class="chip">Hono</span>
+          <span class="chip">Playwright</span>
+          <span class="chip">Tailwind 4</span>
+          <span class="chip">Vitest</span>
+          <span class="chip">MCP stdio</span>
+        </div>
+        <div style="height: 22px"></div>
+        <h2>Surfaces</h2>
+        <div class="pipeline">
+          <div class="step"><i>UI</i> React console · Identity Workbench</div>
+          <div class="step"><i>APP</i> Windows installer + portable</div>
+          <div class="step"><i>API</i> Hono SSE · PDF · manifest</div>
+          <div class="step"><i>MCP</i> 10 tools for agent workflows</div>
+          <div class="step"><i>CLI</i> investigate · list · validate</div>
+        </div>
+        <div class="validation" style="margin-top:20px;background:rgba(124,58,237,.1);border-color:rgba(167,139,250,.3)">
+          <strong style="color:#c4b5fd">Release</strong>
+          <span style="color:#f5f3ff">Spectra-Desk-Setup-5.1.0.exe</span>
+          <small style="color:#c4b5fd">GitHub Latest · portable zip + SHA256SUMS</small>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div>Pitchfork-and-Torch · <code>spectra-desk</code> · v5.1.0</div>
+      <div class="legal">Public sources only · Investigative leads - not legal proof of identity</div>
+    </footer>
+  </div>
+</body>
+</html>
