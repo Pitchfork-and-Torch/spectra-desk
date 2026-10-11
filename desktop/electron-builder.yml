@@ -1,0 +1,56 @@
+﻿appId: com.pitchfork.spectra-desk
+productName: SpectraDesk
+copyright: Copyright (c) 2026 Pitchfork-and-Torch
+directories:
+  output: release
+  buildResources: assets
+# afterPack copies server node_modules (electron-builder strips them from extraResources)
+afterPack: scripts/after-pack.cjs
+files:
+  - dist/**/*
+  - assets/loading.html
+  - assets/activate.html
+  - package.json
+extraResources:
+  # Package server without node_modules here - afterPack injects deps
+  - from: resources/server
+    to: server
+    filter:
+      - "dist/**"
+      - "package.json"
+      - "package-lock.json"
+  - from: resources/client-dist
+    to: client-dist
+    filter:
+      - "**/*"
+  - from: resources/ms-playwright
+    to: ms-playwright
+    filter:
+      - "**/*"
+      # Keep full Chromium; headless_shell is optional (server forces full Chromium via
+      # PLAYWRIGHT_CHROMIUM_USE_HEADLESS_SHELL=0). Exclude shell to shrink installer.
+      - "!chromium_headless_shell-*/**"
+  - from: ../docs/v8/OPERATOR-GUIDE.md
+    to: docs/OPERATOR-GUIDE.md
+asar: true
+asarUnpack:
+  - "**/*.node"
+publish: null
+compression: store
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: assets/icon.ico
+  artifactName: Spectra-Desk-Setup-${version}.${ext}
+  # Apply ProductName/version metadata; skip code signing only
+  signAndEditExecutable: true
+  signExecutable: false
+  executableName: SpectraDesk
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  shortcutName: Spectra Desk
+  artifactName: Spectra-Desk-Setup-${version}.${ext}

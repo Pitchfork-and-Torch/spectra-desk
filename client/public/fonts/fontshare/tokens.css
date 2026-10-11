@@ -1,0 +1,61 @@
+/* Fontshare kit - type tokens (import after fonts.css) */
+
+:root {
+  --font-display: "Clash Display", "Satoshi", system-ui, sans-serif;
+  --font-sans: "Satoshi", system-ui, sans-serif;
+  --font-product: "General Sans", "Satoshi", system-ui, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+
+  --text-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --text-display: clamp(2rem, 1.2rem + 3.2vw, 4.5rem);
+  --text-h1: clamp(1.75rem, 1.2rem + 2vw, 3.25rem);
+  --text-h2: clamp(1.35rem, 1.1rem + 1.2vw, 2.25rem);
+  --text-ui: 0.9375rem;
+  --text-caption: 0.8125rem;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+.h1,
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h1,
+.h1 {
+  font-size: var(--text-h1);
+}
+
+.display {
+  font-size: var(--text-display);
+}
+
+h2,
+.h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.product-ui {
+  font-family: var(--font-product);
+}
+
+code,
+pre,
+.mono {
+  font-family: var(--font-mono);
+}

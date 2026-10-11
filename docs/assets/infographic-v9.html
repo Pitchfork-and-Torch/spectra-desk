@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Spectra Desk v9.0.0 Corroborate Infographic</title>
+  <link rel="stylesheet" href="../../client/public/fonts/fontshare/fonts.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1600px;
+      height: 1000px;
+      font-family: "Satoshi", system-ui, sans-serif;
+      background: #03050c;
+      color: #eceaf6;
+      overflow: hidden;
+    }
+    .frame {
+      width: 1600px;
+      height: 1000px;
+      padding: 36px 46px 30px;
+      position: relative;
+      background:
+        radial-gradient(ellipse 900px 520px at 0% 0%, rgba(124, 58, 237, 0.38), transparent 55%),
+        radial-gradient(ellipse 700px 480px at 100% 8%, rgba(34, 211, 238, 0.18), transparent 50%),
+        radial-gradient(ellipse 600px 400px at 70% 100%, rgba(163, 230, 53, 0.1), transparent 48%),
+        radial-gradient(ellipse 400px 300px at 40% 55%, rgba(251, 113, 133, 0.06), transparent 50%),
+        linear-gradient(168deg, #0a0e1a 0%, #04060e 42%, #0b1224 100%);
+    }
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(167, 139, 250, 0.28);
+      border-radius: 22px;
+      pointer-events: none;
+      box-shadow: inset 0 0 80px rgba(124, 58, 237, 0.06);
+    }
+    .scan {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.035) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 75% 70% at 50% 42%, black 20%, transparent 75%);
+      pointer-events: none;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(48px);
+      pointer-events: none;
+      opacity: 0.55;
+    }
+    .orb.a { width: 280px; height: 280px; top: 120px; left: 38%; background: rgba(124, 58, 237, 0.22); }
+    .orb.b { width: 200px; height: 200px; bottom: 160px; right: 12%; background: rgba(34, 211, 238, 0.15); }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 22px;
+    }
+    .brand { display: flex; gap: 18px; align-items: center; }
+    .mark {
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #ede9fe, #a78bfa 38%, #7c3aed 72%, #22d3ee);
+      display: grid;
+      place-items: center;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.12) inset,
+        0 0 48px rgba(124, 58, 237, 0.55),
+        0 12px 32px rgba(0,0,0,0.35);
+    }
+    .mark svg { width: 40px; height: 40px; }
+    .titles h1 {
+      font-family: "Clash Display", "Satoshi", system-ui, sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      word-spacing: 0.12em;
+      line-height: 1;
+    }
+    .titles h1 .grad {
+      background: linear-gradient(100deg, #ddd6fe 0%, #22d3ee 48%, #a3e635 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .eyebrow span {
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #a78bfa;
+    }
+    .eyebrow .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22d3ee;
+      box-shadow: 0 0 12px #22d3ee;
+    }
+    .titles p {
+      margin-top: 10px;
+      color: #9ba3c4;
+      font-size: 15.5px;
+      font-weight: 500;
+      max-width: 720px;
+      line-height: 1.35;
+    }
+    .badges { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+    .badge {
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+    .badge.cyan {
+      background: rgba(34, 211, 238, 0.12);
+      border: 1px solid rgba(34, 211, 238, 0.4);
+      color: #67e8f9;
+    }
+    .badge.lime {
+      background: rgba(163, 230, 53, 0.1);
+      border: 1px solid rgba(163, 230, 53, 0.38);
+      color: #bef264;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 18px;
+    }
+    .stat {
+      background: linear-gradient(165deg, rgba(124, 58, 237, 0.22), rgba(12, 16, 32, 0.9) 70%);
+      border: 1px solid rgba(167, 139, 250, 0.28);
+      border-radius: 14px;
+      padding: 14px 16px 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #a78bfa, #22d3ee, transparent);
+      opacity: 0.7;
+    }
+    .stat .n {
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      font-size: 30px;
+      font-weight: 700;
+      color: #f8f7ff;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .stat .n.grad {
+      background: linear-gradient(90deg, #c4b5fd, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .stat .l {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #9ba3c4;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .rail-wrap {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 18px;
+    }
+    .rail-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #a78bfa;
+      margin-bottom: 10px;
+    }
+    .rail {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      position: relative;
+    }
+    .rail::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 4%;
+      right: 4%;
+      height: 2px;
+      background: linear-gradient(90deg,
+        rgba(34, 211, 238, 0.15),
+        rgba(167, 139, 250, 0.55),
+        rgba(34, 211, 238, 0.55),
+        rgba(163, 230, 53, 0.45));
+      z-index: 0;
+    }
+    .node {
+      position: relative;
+      z-index: 1;
+      background: rgba(8, 12, 24, 0.92);
+      border: 1px solid rgba(167, 139, 250, 0.22);
+      border-radius: 14px;
+      padding: 12px 11px 11px;
+      min-height: 102px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .node .idx {
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #22d3ee;
+      letter-spacing: 0.06em;
+    }
+    .node .t {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #f0eef8;
+    }
+    .node .d {
+      font-size: 11px;
+      color: #7f88a8;
+      line-height: 1.3;
+      margin-top: auto;
+    }
+    .node:nth-child(1) { border-color: rgba(34, 211, 238, 0.35); }
+    .node:nth-child(7) { border-color: rgba(163, 230, 53, 0.4); }
+
+    .body {
+      display: grid;
+      grid-template-columns: 1.38fr 1fr 0.95fr;
+      gap: 14px;
+      position: relative;
+      z-index: 2;
+    }
+    .card {
+      background: rgba(8, 11, 22, 0.82);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      border-radius: 16px;
+      padding: 16px 18px 14px;
+      backdrop-filter: blur(10px);
+    }
+    .card h2 {
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #a78bfa;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card h2::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #a78bfa;
+      box-shadow: 0 0 10px #a78bfa;
+    }
+
+    .feat {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 11px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+    }
+    .feat:last-child { border-bottom: 0; padding-bottom: 0; }
+    .feat:first-of-type { padding-top: 0; }
+    .ico {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .ico.c { background: rgba(34, 211, 238, 0.14); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); }
+    .ico.v { background: rgba(167, 139, 250, 0.16); color: #c4b5fd; border: 1px solid rgba(167, 139, 250, 0.32); }
+    .ico.g { background: rgba(163, 230, 53, 0.12); color: #a3e635; border: 1px solid rgba(163, 230, 53, 0.3); }
+    .ico.a { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+    .ico.r { background: rgba(251, 113, 133, 0.12); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.3); }
+    .feat h3 { font-size: 14px; font-weight: 600; margin-bottom: 2px; color: #f5f3ff; }
+    .feat p { font-size: 12px; color: #8b93b3; line-height: 1.38; }
+
+    .locks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .lock {
+      border-radius: 12px;
+      padding: 12px 12px 10px;
+      border: 1px solid transparent;
+    }
+    .lock .name {
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .lock .desc {
+      font-size: 11.5px;
+      line-height: 1.35;
+      opacity: 0.88;
+    }
+    .lock.l1 { background: rgba(34, 197, 94, 0.1); border-color: rgba(34, 197, 94, 0.38); }
+    .lock.l1 .name, .lock.l1 .desc { color: #86efac; }
+    .lock.l2 { background: rgba(34, 211, 238, 0.1); border-color: rgba(34, 211, 238, 0.35); }
+    .lock.l2 .name, .lock.l2 .desc { color: #67e8f9; }
+    .lock.l3 { background: rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.35); }
+    .lock.l3 .name, .lock.l3 .desc { color: #fcd34d; }
+    .lock.l4 { background: rgba(248, 113, 113, 0.1); border-color: rgba(248, 113, 113, 0.32); }
+    .lock.l4 .name, .lock.l4 .desc { color: #fca5a5; }
+
+    .formula {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(34, 211, 238, 0.08));
+      border: 1px solid rgba(167, 139, 250, 0.3);
+    }
+    .formula .k {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #c4b5fd;
+      margin-bottom: 5px;
+    }
+    .formula .eq {
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: #f5f3ff;
+      line-height: 1.4;
+    }
+    .formula .note {
+      margin-top: 6px;
+      font-size: 11.5px;
+      color: #9ba3c4;
+      line-height: 1.35;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .chip {
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      font-size: 10.5px;
+      font-weight: 500;
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: rgba(34, 211, 238, 0.08);
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      color: #a5f3fc;
+    }
+    .chip.v {
+      background: rgba(167, 139, 250, 0.12);
+      border-color: rgba(167, 139, 250, 0.32);
+      color: #ddd6fe;
+    }
+    .chip.g {
+      background: rgba(163, 230, 53, 0.1);
+      border-color: rgba(163, 230, 53, 0.3);
+      color: #d9f99d;
+    }
+    .surf { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .surf-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .surf-row i {
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 700;
+      color: #22d3ee;
+      width: 28px;
+      flex-shrink: 0;
+    }
+    .panel {
+      border-radius: 12px;
+      padding: 11px 12px;
+      margin-bottom: 8px;
+    }
+    .panel:last-child { margin-bottom: 0; }
+    .panel.green {
+      background: rgba(34, 197, 94, 0.09);
+      border: 1px solid rgba(34, 197, 94, 0.32);
+    }
+    .panel.violet {
+      background: rgba(124, 58, 237, 0.14);
+      border: 1px solid rgba(167, 139, 250, 0.36);
+    }
+    .panel strong {
+      display: block;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .panel.green strong { color: #86efac; }
+    .panel.violet strong { color: #c4b5fd; }
+    .panel .big {
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    .panel.green .big { color: #f0fdf4; }
+    .panel.violet .big { color: #f5f3ff; }
+    .panel small {
+      display: block;
+      margin-top: 4px;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    .panel.green small { color: #86efac; opacity: 0.92; }
+    .panel.violet small { color: #c4b5fd; opacity: 0.92; }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #6b728f;
+      font-size: 12px;
+    }
+    footer code {
+      font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+      color: #a78bfa;
+    }
+    .legal {
+      color: #7c839e;
+      font-size: 11.5px;
+      max-width: 52%;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="scan"></div>
+    <div class="orb a"></div>
+    <div class="orb b"></div>
+
+    <header>
+      <div class="brand">
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#0b1020" d="M16 3C9.4 3 5 8.2 5 14.5V26c0 0 2.4-2.2 4.4 0 2 2.2 3.6-1.8 6.6 0 2-2.2 4.4 0 4.4 0V14.5C20 8.2 15.6 3 16 3Z"/>
+            <ellipse cx="12" cy="14.5" rx="2.1" ry="2.6" fill="#0b1020"/>
+            <ellipse cx="20" cy="14.5" rx="2.1" ry="2.6" fill="#0b1020"/>
+            <circle cx="12.6" cy="13.4" r=".75" fill="#22d3ee"/>
+            <circle cx="20.6" cy="13.4" r=".75" fill="#22d3ee"/>
+          </svg>
+        </div>
+        <div class="titles">
+          <div class="eyebrow"><div class="pulse"></div><span>Corroborate</span></div>
+          <h1>Spectra Desk <span class="grad">v9.0.0</span></h1>
+          <p>The public web, as a brief. Homonyms drop. Every line is hashed. You confirm LOCKED.</p>
+        </div>
+      </div>
+      <div class="badges">
+        <div class="badge cyan">PUBLIC SOURCES ONLY</div>
+        <div class="badge lime">FREE WINDOWS · HASHED · UNSIGNED</div>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><div class="n grad">35</div><div class="l">MCP tools, lock refuses</div></div>
+      <div class="stat"><div class="n">139</div><div class="l">unit tests green</div></div>
+      <div class="stat"><div class="n grad">898</div><div class="l">operator toolkit URLs</div></div>
+      <div class="stat"><div class="n">12</div><div class="l">queries in Fast, the default</div></div>
+      <div class="stat"><div class="n grad">6-12</div><div class="l">page client brief</div></div>
+    </div>
+
+    <div class="rail-wrap">
+      <div class="rail-label">v9 corroborate pipeline</div>
+      <div class="rail">
+        <div class="node">
+          <div class="idx">01</div>
+          <div class="t">Intake</div>
+          <div class="d">Name, email, username. Fast by default</div>
+        </div>
+        <div class="node">
+          <div class="idx">02</div>
+          <div class="t">Query plan</div>
+          <div class="d">See the pack before it spends. Cap 12 or 28</div>
+        </div>
+        <div class="node">
+          <div class="idx">03</div>
+          <div class="t">Divide</div>
+          <div class="d">Matrix. Homonyms drop with a reason</div>
+        </div>
+        <div class="node">
+          <div class="idx">04</div>
+          <div class="t">Corroborate</div>
+          <div class="d">Conflicting anchors refuse a merge</div>
+        </div>
+        <div class="node">
+          <div class="idx">05</div>
+          <div class="t">Claim ledger</div>
+          <div class="d">URL, captured-at, SHA-256, band</div>
+        </div>
+        <div class="node">
+          <div class="idx">06</div>
+          <div class="t">Human LOCK</div>
+          <div class="d">You confirm. The machine does not</div>
+        </div>
+        <div class="node">
+          <div class="idx">07</div>
+          <div class="t">Brief out</div>
+          <div class="d">Client, counsel, or press. HTML and PDF</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="body">
+      <section class="card">
+        <h2>v9 engine highlights</h2>
+        <div class="feat">
+          <div class="ico c">C</div>
+          <div>
+            <h3>Claim ledger</h3>
+            <p>Each surviving sentence carries a source URL, captured-at, SHA-256, and a confidence band.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="ico v">M</div>
+          <div>
+            <h3>Corroboration matrix</h3>
+            <p>Bands: high, medium, low, insufficient, cannot tell. High is what the client brief promotes.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="ico g">L</div>
+          <div>
+            <h3>Human LOCK only</h3>
+            <p>High fusion can reach probable. It never auto-LOCKs. Agents can draft. Agents cannot LOCK.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="ico a">S</div>
+          <div>
+            <h3>Three skins, one engine</h3>
+            <p>Client brief, counsel-safe handoff, press handoff. Notes stay off the brief unless you pin them.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="ico r">D</div>
+          <div>
+            <h3>Doctor and a DEMO case</h3>
+            <p>Catalog, hash, port, Fast cap, PDF, MCP, CLI, redactor. Avery Quill is a fictional composite.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Identity lock states</h2>
+        <div class="locks">
+          <div class="lock l1">
+            <div class="name">LOCKED</div>
+            <div class="desc">A person confirmed it. Merkle seal writes here</div>
+          </div>
+          <div class="lock l2">
+            <div class="name">PROBABLE</div>
+            <div class="desc">Strong lean. Still not LOCKED</div>
+          </div>
+          <div class="lock l3">
+            <div class="name">POSSIBLE</div>
+            <div class="desc">Thin anchors. Keep it on the workbench</div>
+          </div>
+          <div class="lock l4">
+            <div class="name">INSUFFICIENT</div>
+            <div class="desc">Do not claim identity from structure alone</div>
+          </div>
+        </div>
+        <div class="formula">
+          <div class="k">Lock law</div>
+          <div class="eq">you confirm LOCKED. the machine does not.</div>
+          <div class="note">HTTP probes never buy a high score. Conflicting anchors refuse a merge. Face clusters do not lock a brief.</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Stack &amp; surfaces</h2>
+        <div class="stack">
+          <span class="chip g">v9.0.0</span>
+          <span class="chip v">Zod 4</span>
+          <span class="chip v">TypeScript 7</span>
+          <span class="chip v">Vite 8</span>
+          <span class="chip v">Electron 43</span>
+          <span class="chip">React 19</span>
+          <span class="chip">Hono</span>
+          <span class="chip">Playwright</span>
+          <span class="chip">Tailwind 4</span>
+          <span class="chip">Vitest</span>
+          <span class="chip">MCP 35</span>
+          <span class="chip g">Toolkit 898</span>
+        </div>
+        <div class="surf">
+          <div class="surf-row"><i>UI</i> Matrix · brief · query plan</div>
+          <div class="surf-row"><i>APP</i> Free Windows NSIS + portable</div>
+          <div class="surf-row"><i>API</i> Hono SSE · PDF · ledger</div>
+          <div class="surf-row"><i>MCP</i> intake · brief · lock refuses</div>
+          <div class="surf-row"><i>CLI</i> intake · divide · doctor</div>
+        </div>
+        <div class="panel green">
+          <strong>Free Windows app</strong>
+          <div class="big">No license key</div>
+          <small>Download and run. Honest health: version, Chromium, toolkit count.</small>
+        </div>
+        <div class="panel violet">
+          <strong>Release</strong>
+          <div class="big">Spectra-Desk-Setup-9.0.0.exe</div>
+          <small>Same portable zip. SHA256SUMS. Unsigned.</small>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div>Pitchfork-and-Torch · <code>spectra-desk</code> · v9.0.0 Corroborate</div>
+      <div class="legal">Public sources only. Investigative leads, not legal proof of identity.</div>
+    </footer>
+  </div>
+</body>
+</html>
