@@ -1,0 +1,50 @@
+{
+  "name": "spectra-desk-desktop",
+  "version": "10.0.2",
+  "private": true,
+  "description": "Spectra Desk by Pitchfork-and-Torch",
+  "main": "dist/main.js",
+  "author": {
+    "name": "Pitchfork-and-Torch",
+    "url": "https://github.com/Pitchfork-and-Torch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pitchfork-and-Torch/spectra-desk.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare:resources": "node scripts/prepare-resources.mjs",
+    "build:icon": "node scripts/build-icon.mjs",
+    "start": "electron .",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "electron": "^43.5.0",
+    "electron-builder": "^26.15.3",
+    "png-to-ico": "^3.0.2",
+    "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "electron@43.7.9": true
+  },
+  "overrides": {
+    "@electron/get": {
+      "undici": "7.29.1"
+    },
+    "@xmldom/xmldom": "0.8.15",
+    "brace-expansion@1": "1.1.21",
+    "brace-expansion@2": "2.1.7",
+    "brace-expansion@5": "5.0.12",
+    "fast-uri": "3.1.8",
+    "js-yaml": "4.3.2",
+    "http-cache-semantics": "4.3.0",
+    "tar": "7.5.22",
+    "node-gyp": {
+      "undici": "6.28.1"
+    }
+  }
+}

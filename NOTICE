@@ -1,0 +1,8 @@
+Spectra Desk
+Copyright (c) 2026 Pitchfork-and-Torch
+
+This product is MIT licensed. See LICENSE.
+
+The toolkit catalog is a factual list of public search URL templates, inspired by Exploratores (SOsintOps, AGPL-3.0). See THIRD-PARTY-TOOLKIT.md. Spectra Desk does not ship Exploratores code.
+
+Windows builds are hashed and unsigned unless a release note says otherwise.

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Activate Spectra Desk</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; }
+      body { font-family: "Segoe UI", system-ui, sans-serif; background: #06080f; color: #e2e8f0; padding: 2rem; }
+      h1 { font-size: 1.35rem; margin-bottom: 0.5rem; background: linear-gradient(90deg, #67e8f9, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      p { color: #94a3b8; font-size: 0.875rem; line-height: 1.5; margin-bottom: 1rem; }
+      label { display: block; font-size: 0.75rem; color: #64748b; margin-top: 0.75rem; }
+      input { width: 100%; margin-top: 0.35rem; padding: 0.7rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255,255,255,.1); background: #0d1117; color: #e2e8f0; font-family: ui-monospace, monospace; }
+      .actions { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+      button { flex: 1; padding: 0.75rem; border: 0; border-radius: 8px; font-weight: 600; cursor: pointer; }
+      .primary { background: linear-gradient(90deg, #22d3ee, #a78bfa); color: #06080f; }
+      .ghost { background: transparent; color: #94a3b8; border: 1px solid rgba(255,255,255,.1); }
+      .err { color: #f87171; font-size: 0.8rem; min-height: 1.25rem; margin-top: 0.75rem; }
+      a { color: #a78bfa; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <h1>Activate Spectra Desk</h1>
+    <p>Enter the email and license key from your monthly subscription.</p>
+    <label>Email</label>
+    <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
+    <label>License key</label>
+    <input id="key" type="text" placeholder="SPDR-XXXX-XXXX-XXXX" spellcheck="false" />
+    <div class="err" id="err"></div>
+    <div class="actions">
+      <button class="ghost" type="button" id="cancel">Quit</button>
+      <button class="primary" type="button" id="activate">Activate</button>
+    </div>
+    <p style="margin-top:1.5rem">No license? <a id="subscribe">Subscribe monthly</a></p>
+    <script>
+      const api = window.spectraLicense;
+      document.getElementById("activate").onclick = async () => {
+        document.getElementById("err").textContent = "";
+        const r = await api.activate(document.getElementById("email").value, document.getElementById("key").value);
+        if (!r.ok) document.getElementById("err").textContent = r.error || "Activation failed";
+      };
+      document.getElementById("cancel").onclick = () => api.cancel();
+      document.getElementById("subscribe").onclick = () => api.openSubscribe();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "employer": "example.com",
+  "email": "john.doe@example.com",
+  "city": "Springfield",
+  "state": "IL",
+  "notes": "Example intake for CLI: npm run cli -- investigate --json sample-subject.json"
+}
